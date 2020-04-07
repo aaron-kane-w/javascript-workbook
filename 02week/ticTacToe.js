@@ -34,15 +34,15 @@ function horizontalWin() {
   if (board[2][0] === 'X' && board[2][1] === 'X' && board[2][2] === 'X') {
     return true;
   }
-  // if (board[0][0] === 'O' && board[0][1] === 'O' && board[0][2] === 'O') {
-  //   return true;
-  // }
-  // if (board[1][0] === 'O' && board[1][1] === 'O' && board[1][2] === 'O') {
-  //   return true;
-  // }
-  // if (board[2][0] === 'O' && board[2][1] === 'O' && board[2][2] === 'O') {
-  //   return true;
-  // }
+  if (board[0][0] === 'O' && board[0][1] === 'O' && board[0][2] === 'O') {
+    return true;
+  }
+  if (board[1][0] === 'O' && board[1][1] === 'O' && board[1][2] === 'O') {
+    return true;
+  }
+  if (board[2][0] === 'O' && board[2][1] === 'O' && board[2][2] === 'O') {
+    return true;
+  }
 }
 
 // should return true, if the player won on any column
@@ -56,15 +56,15 @@ function verticalWin() {
   if (board[0][2] === 'X' && board[1][2] === 'X' && board[2][2] === 'X') {
     return true;
   }
-  // if (board[0][0] === 'O' && board[1][0] === 'O' && board[2][0] === 'O') {
-  //   return true;
-  // }
-  // if (board[0][1] === 'O' && board[1][1] === 'O' && board[2][1] === 'O') {
-  //   return true;
-  // }
-  // if (board[0][2] === 'O' && board[1][2] === 'O' && board[2][2] === 'O') {
-  //   return true;
-  // }
+  if (board[0][0] === 'O' && board[1][0] === 'O' && board[2][0] === 'O') {
+    return true;
+  }
+  if (board[0][1] === 'O' && board[1][1] === 'O' && board[2][1] === 'O') {
+    return true;
+  }
+  if (board[0][2] === 'O' && board[1][2] === 'O' && board[2][2] === 'O') {
+    return true;
+  }
 }
 // should return true, if the player won on any diagnally
 function diagonalWin() {
@@ -74,12 +74,12 @@ function diagonalWin() {
   if (board[0][2] === 'X' && board[1][1] === 'X' && board[2][0] === 'X') {
     return true;
   }
-  // if (board[0][0] === 'O' && board[1][1] === 'O' && board[2][2] === 'O') {
-  //   return true;
-  // }
-  // if (board[0][2] === 'O' && board[1][1] === 'O' && board[2][0] === 'O') {
-  //   return true;
-  // }
+  if (board[0][0] === 'O' && board[1][1] === 'O' && board[2][2] === 'O') {
+    return true;
+  }
+  if (board[0][2] === 'O' && board[1][1] === 'O' && board[2][0] === 'O') {
+    return true;
+  }
 }
 
 // should return true, if the player won
@@ -93,7 +93,13 @@ function checkForWin() {
 
 function ticTacToe(row, column) {
   // Your code here
+  board[row][column] = playerTurn;
 
+  if (playerTurn === 'X'){
+    playerTurn = 'O'
+  } else {
+    playerTurn = 'X'
+  }
 
   // brain of the game that plays the game
   // 1) Player 1: set the value of the box selected 'X'
@@ -113,8 +119,6 @@ function getPrompt() {
   });
 
 }
-
-
 
 // Tests
 
