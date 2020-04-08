@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>repl.it</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <style>
+      * {
+        user-select: none;
+      }
+      .done {
+        text-decoration: line-through;
+      }
+      .delete,
+      #add {
+        margin-left: 0.3rem;
+      }
+      .delete:hover,
+      #add:hover,
+      span:hover {
+        cursor: pointer;
+      }
+  
+    </style>
+  </head>
+  <!-- todo.html -->
+  <!-- Things the UI should do
+  1. Click to cross out items
+  2. Create input & button to add more list items
+  3. Add delete button next to every list item
+   -->
+  <body>
+    <h1>To-Do List Tracker</h1>
+    <ul></ul>
+    <input type='text' id='inputText'><button id='add'>add</button>
+    <script src="todo.js"></script>
+  </body>
+</html>
