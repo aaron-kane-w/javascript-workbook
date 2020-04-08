@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>repl.it</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <script>
+      window.onload = function() {
+        const heading = document.createElement("h1");
+        const heading_text = document.createTextNode("Big Head!");
+        heading.appendChild(heading_text);
+        document.body.appendChild(heading);
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Week 3: Pre-Work: The DOM</h1>
+    <input type="button" value="Generate a table." onclick="generate_table()">
+    <script src="theDOM.js"></script>
+  </body>
+</html>
