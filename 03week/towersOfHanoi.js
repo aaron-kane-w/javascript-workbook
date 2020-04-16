@@ -6,6 +6,7 @@ const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout
 });
+//npm test 03week/towersOfHanoi.js
 
 let stacks = {
   a: [4, 3, 2, 1],
@@ -19,24 +20,45 @@ function printStacks() {
   console.log("c: " + stacks.c);
 }
 
-function movePiece() {
+function movePiece(start, end) {
   // Your code here
-
+  if (isLegal(start, end)) {
+    let from = start.pop()
+    end.push(from)
+  } else {
+    console.log(isLegal(start, end))
+    console.log('Illegal move')
+  }
 }
 
-function isLegal() {
+function isLegal(start, end) {
   // Your code here
-
+  if (((start[start.length-1] < end[end.length-1]) || (end.length === 0)) && (start.length > 0)) {
+    return true
+  } else {
+    return false
+  }
 }
 
 function checkForWin() {
   // Your code here
-
+  if (stacks.b.length === 4 || stacks.c.length === 4) {
+    return true
+  } else {
+    return false
+  }
 }
 
 function towersOfHanoi(startStack, endStack) {
   // Your code here
-
+  let start = stacks[startStack]
+  let end = stacks[endStack]
+  
+  if (checkForWin() === true) {
+    console.log('You won!')
+  } else if (checkForWin() === false) {
+    movePiece(start, end)
+  }
 }
 
 function getPrompt() {
