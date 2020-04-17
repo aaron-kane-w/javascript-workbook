@@ -10,7 +10,33 @@ const rl = readline.createInterface({
 
 const pigLatin = (word)  => {
 
-  // Your code here
+  let str = word.toLowerCase().trim()
+
+  const firstVowel = (str) => {
+    for (let i = 0; i < str.length; i++){
+      if ('aeiou'.indexOf(str[i]) !== -1){
+        return i
+      }
+    }
+  }
+  // just for fun searched words that start with y
+  const yFirst = (str) => {
+    for (let i = 0; i < str.length; i++) {
+      if (str.charAt(0) === 'y') {
+        return true
+      }
+    }
+  }
+
+  let firstPosition = firstVowel(str)
+
+  if (firstPosition === 0){
+    return str + 'yay'
+  } else if (yFirst(str) === true) {
+    return str.slice(firstPosition) + str.slice(0, firstPosition) + '-ay'
+  } else {
+    return str.slice(firstPosition) + str.slice(0, firstPosition) + 'ay'
+  }
 
 }
 
