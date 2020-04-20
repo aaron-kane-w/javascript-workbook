@@ -23,6 +23,9 @@ function printStacks() {
 function movePiece(start, end) {
   // Your code here
   if (isLegal(start, end) === true) {
+    start = stacks[start]
+    end = stacks[end]
+
     let from = start.pop()
     end.push(from)
     checkForWin()
@@ -33,6 +36,8 @@ function movePiece(start, end) {
 
 function isLegal(start, end) {
   // Your code here
+  start = stacks[start]
+  end = stacks[end]
   if (((start[start.length-1] < end[end.length-1]) || (end.length === 0)) && (start.length > 0)) {
     return true
   } else {
@@ -52,11 +57,8 @@ function checkForWin() {
 
 function towersOfHanoi(startStack, endStack) {
   // Your code here
-  let start = stacks[startStack]
-  let end = stacks[endStack]
-  
   if (checkForWin() === false) {
-    movePiece(start, end)
+    movePiece(startStack, endStack)
   }
 }
 
