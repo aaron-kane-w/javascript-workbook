@@ -6,7 +6,6 @@ const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout
 });
-//npm test 03week/towersOfHanoi.js
 
 let stacks = {
   a: [4, 3, 2, 1],
