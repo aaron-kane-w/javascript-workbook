@@ -28,13 +28,46 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
 
-function generateHint() {
+function generateHint(guess, solution) {
   // your code here
+  let guessArray = guess.split('')
+  let solutionArray = solution.split('')
+
+  let exactMatch = 0
+  let partialMatch = 0
+  let targetIndex = []
+
+  for (let i=0; i<4; i++) {
+    if (solutionArray[i] === guessArray[i]) {
+      exactMatch ++
+      solutionArray[i] = null
+      console.log(solutionArray)
+    }
+  }
+
+  for (let i=0; i<4; i++) {
+    targetIndex.push(guessArray.indexOf(solutionArray[i]))
+    if (targetIndex[i] > -1) {
+      partialMatch ++
+      console.log(partialMatch)
+      solutionArray[i] = null
+      console.log(solutionArray)
+    }
+  }
+
+  return `${exactMatch} - ${partialMatch}`
+  
 }
 
 function mastermind(guess) {
-  solution = 'abcd'; // Comment this out to generate a random solution
+  let solution = 'abcd'; // Comment this out to generate a random solution
   // your code here
+
+  if (guess === solution) {
+    return 'You guessed it!'
+  } else {
+    generateHint(guess, solution)
+  } 
 }
 
 
