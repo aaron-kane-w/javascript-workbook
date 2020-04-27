@@ -21,6 +21,7 @@ class CrewMember {
   enterShip(someShip){
     this.ship = someShip
     someShip.crew.push(this)
+    console.log(someShip, this.ship.crew[0].ship)
   }
 }
 
@@ -36,12 +37,8 @@ class Ship {
       //this method should return the ship's ability if there is a crew memeber whose job matches up with the ships type
     if (this.crew.length === 0) {
       return `Can't perform a mission yet.`
-    } else if (this.crew.job === 'pilot' && this.type === 'MAV') {
-      return "Ascend into low orbit"
-    } else if (this.crew.job === 'commander' && this.type === 'Main Ship') {
-      return `Interplanetary Space Travel`
-    } else {
-      return `Can't perform a mission yet.`
+    }else {
+      return this.ability
     }
   }
 }
