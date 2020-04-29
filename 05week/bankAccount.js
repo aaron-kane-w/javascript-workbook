@@ -9,8 +9,8 @@ class BankAccount {
 
   balance() { 
     // returns the current balance on the account = sum of transactions array
-     return this.transactions
-      .reduce((prev,curr,i) => prev + curr, 0)
+    return this.transactions
+    .reduce((prev,curr,i) => prev + curr, 0)
   }
 
   deposit(amt) {
