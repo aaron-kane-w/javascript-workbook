@@ -1,52 +1,59 @@
 const arrOfPeople = [
   {
+    id: 1,
+    name: "Drew Hartsten",
+    age: 28,
+    skillSet: "skater",
+    placeBorn: "San Luis, CA"
+  },
+  {
     id: 2,
     name: "Charles Young",
     age: 55,
     skillSet: "welding",
-    placeBorn: "Omaha, Nebraska"
+    placeBorn: "Omaha, NB"
   },
   {
     id: 3,
     name: "Judy Twilight",
     age: 35,
     skillSet: "fishing",
-    placeBorn: "Louisville, Kentucky"
+    placeBorn: "Louisville, KY"
   },
   {
     id: 4,
     name: "Cynthia Doolittle",
     age: 20,
-    skillSet: "tic tac toe",
-    placeBorn: "Pawnee, Texas"
+    skillSet: "farming",
+    placeBorn: "Pawnee, TX"
   },
   {
     id: 5,
     name: "John Willouby",
     age: 28,
-    skillSet: "pipe fitting",
-    placeBorn: "New York, New York"
+    skillSet: "karate",
+    placeBorn: "Manhattan, NY"
   },
   {
     id: 6,
     name: "Stan Honest",
     age: 20,
-    skillSet: "boom-a-rang throwing",
-    placeBorn: "Perth, Australia"
+    skillSet: "boom-a-rang",
+    placeBorn: "Clevland, OH"
   },
   {
     id: 7,
     name: "Mia Watu",
     age: 17,
     skillSet: "acrobatics",
-    placeBorn: "Los Angeles, California"
+    placeBorn: "Los Angeles, CA"
   },
   {
     id: 8,
     name: "Walter Cole",
     age: 32,
-    skillSet: "jump rope",
-    placeBorn: "New Orleans, Louisiana"
+    skillSet: "calistenics",
+    placeBorn: "New Orleans, LA"
   },
 ]
 
@@ -56,14 +63,19 @@ const redTeam = []
 
 
 
-class player {
-  constructor(){}
+class Player {
+  constructor(id, name, age, skillSet) {
+    this.id = id
+    this.name = name
+    this.age = age
+    this.skillSet = skillSet
+  }
 }
-class blueTeammate {
-  constructor(){}
-}
-class redTeammate {
-  constructor(){}
+class Teammate extends Player {
+  constructor (name, age, skillSet, team) {
+    super (name, age, skillSet)
+    this.team = team
+  }
 }
 
 const listPeopleChoices = () => {
@@ -78,6 +90,7 @@ const listPeopleChoices = () => {
     makePlayerBtn.addEventListener('click', function() {
       makePlayer(person)
       removePersonFromListOfPeople(makePlayerBtn)
+      listOfPlayers.push(person) //added object to array
     } )
 
     li.appendChild(makePlayerBtn)
@@ -127,12 +140,14 @@ const joinBlueTeam = (person) => {
   const li = document.createElement('li')
   li.innerHTML = `${person.name}`
   blueList.append(li)
+  blueTeam.push(person.name) //added to blueTeam array
 }
 const joinRedTeam = (person) => {
   const redList = document.getElementById('redList')
   const li = document.createElement('li')
   li.innerHTML = `${person.name}`
   redList.append(li)
+  redTeam.push(person.name) //added to redTeam array
 }
 
 
@@ -140,7 +155,6 @@ const joinRedTeam = (person) => {
 const removePersonFromListOfPeople = (makePlayerBtn) => {
   const parentLi = makePlayerBtn.parentElement
   parentLi.remove()
-  console.log(`Make Player Parent Li = ${parentLi}`)
 }
 
 const removeSortedPlayer = (li, blueBtn, redBtn) => {
