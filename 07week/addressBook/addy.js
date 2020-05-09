@@ -30,21 +30,6 @@ function generateContacs(json) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-function moreInfo() {
-  
-  
-}
-
 let btn = document.querySelectorAll('button').addEventListener('click', function() {
   console.log('button clicked')
 })
