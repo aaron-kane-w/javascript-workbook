@@ -46,52 +46,49 @@ function getPosts() {
       let button = createNode('button')
       button.innerText = 'Main Characters'
 
-
-      button.addEventListener('click', function() {
-        fetch(urlPeople)
-        .then(response => {
-          if (!response.ok) {
-            throw Error(response.statusText)
-          } else {
-            return response.json()
-          }
-        })
-        .then(posts => {
-          let data = posts.results
-          getCharacters(data, ul, button)
-          button.innerText = 'Collapse'     
-        })
-        .catch(error => console.log('Error =', error))
-      })
-
       append(title, date)
       append(div, title)
-      append(div, ul)
       append(div, button)
       append(mainDiv, div)
-      
+
+
+      button.addEventListener('click', function() {
+        // Thanks Yousif for your help on this piece of code and adding the if statement here! 
+
+        if (button.innerText === 'Collapse') {
+          ul.innerText = ''
+          button.innerText = 'Main Characters'
+        } else {
+          append(div, ul)
+          fetch(urlPeople)
+          .then(response => {
+            if (!response.ok) {
+              throw Error(response.statusText)
+            } else {
+              return response.json()
+            }
+          })
+          .then(posts => {
+            let data = posts.results
+            getCharacters(data, ul, button)                
+          })
+          .catch(error => console.log('Error =', error))
+        }
+      })     
     })
   })
+  
   .catch(error => console.log('Error =', error))
 }
 
 
 
-function getCharacters(data, ul, button) {
-  console.log(`Data = `, data)
-  
-
+function getCharacters(data, ul, button) {  
   return data.forEach(elem => {
     let li = createNode('li')
     li.innerText = `${elem.name}`
-    
-
-    if (button.innerText === 'Main Characters') {
-      append(ul, li)
-    } else {
-      window.location.reload()
-    } 
-    
+    button.innerText = 'Collapse' 
+    append(ul, li)
   })
 }
 
