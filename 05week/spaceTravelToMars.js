@@ -10,6 +10,38 @@ let jobTypes = {
 };
 
 // Your code here
+class CrewMember {
+  constructor(name, job, specialSkill) {
+    this.name = name
+    this.job = job
+    this.specialSkill = specialSkill
+    this.ship = null
+  }
+
+  enterShip(someShip){
+    this.ship = someShip
+    someShip.crew.push(this)
+    console.log(someShip, this.ship.crew[0].ship)
+  }
+}
+
+class Ship {
+  constructor(name, type, ability) {
+    this.name = name
+    this.type = type
+    this.ability = ability
+    this.crew = []
+  }
+
+  missionStatement() {
+      //this method should return the ship's ability if there is a crew memeber whose job matches up with the ships type
+    if (this.crew.length === 0) {
+      return `Can't perform a mission yet.`
+    }else {
+      return this.ability
+    }
+  }
+}
 
 //tests
 if (typeof describe === 'function'){
